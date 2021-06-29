@@ -321,6 +321,16 @@ class UGATIT(object) :
 
         return out, cam
 
+    def generate_a2b_a(self, x_A, reuse=False):
+        out, cam, attention, _ = self.generator(x_A, reuse=reuse, scope="generator_B")
+
+        return out, cam, attention
+
+    def generate_b2a_a(self, x_B, reuse=False):
+        out, cam, attention, _ = self.generator(x_B, reuse=reuse, scope="generator_A")
+
+        return out, cam, attention
+
     def discriminate_real(self, x_A, x_B):
         real_A_logit, real_A_cam_logit, _, _ = self.discriminator(x_A, scope="discriminator_A")
         real_B_logit, real_B_cam_logit, _, _ = self.discriminator(x_B, scope="discriminator_B")
@@ -398,8 +408,8 @@ class UGATIT(object) :
             self.domain_B = trainB_iterator.get_next()
 
             """ Define Generator, Discriminator """
-            x_ab, cam_ab, attention_a = self.generate_a2b(self.domain_A) # real a
-            x_ba, cam_ba, attention_b = self.generate_b2a(self.domain_B) # real b
+            x_ab, cam_ab, attention_a = self.generate_a2b_a(self.domain_A) # real a
+            x_ba, cam_ba, attention_b = self.generate_b2a_a(self.domain_B) # real b
 
             x_aba, _ = self.generate_b2a(x_ab, reuse=True) # real b
             x_bab, _ = self.generate_a2b(x_ba, reuse=True) # real a
