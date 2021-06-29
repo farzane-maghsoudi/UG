@@ -2,3 +2,4 @@ tensorflow
 numpy
 h5py
 opencv-python
+tensorflow-addons
