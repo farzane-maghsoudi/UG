@@ -1,5 +1,6 @@
 import tensorflow as tf
-import tensorflow.contrib as tf_contrib
+#import tensorflow.contrib as tf_contrib
+import tensorflow_addons as tfa
 
 # Xavier : tf_contrib.layers.xavier_initializer()
 # He : tf_contrib.layers.variance_scaling_initializer()
@@ -7,7 +8,8 @@ import tensorflow.contrib as tf_contrib
 # l2_decay : tf_contrib.layers.l2_regularizer(0.0001)
 
 weight_init = tf.compat.v1.random_normal_initializer(mean=0.0, stddev=0.02)
-weight_regularizer = tf_contrib.layers.l2_regularizer(scale=0.0001)
+weight_regularizer = tf.keras.regularizers.L2(l2=0.0001)
+#weight_regularizer = tf_contrib.layers.l2_regularizer(scale=0.0001)
 
 
 ##################################################################################
@@ -234,16 +236,13 @@ def adaptive_instance_layer_norm(x, gamma, beta, smoothing=True, scope='instance
 
 
 def instance_norm(x, scope='instance_norm'):
-    return tf_contrib.layers.instance_norm(x,
-                                           epsilon=1e-05,
-                                           center=True, scale=True,
-                                           scope=scope)
+	return tfa.layers.InstanceNormalization(epsilon=1e-05, center=True, scale=True)(x)
+    #return tf_contrib.layers.instance_norm(x, epsilon=1e-05, center=True, scale=True, scope=scope)
 
 
 def layer_norm(x, scope='layer_norm'):
-    return tf_contrib.layers.layer_norm(x,
-                                        center=True, scale=True,
-                                        scope=scope)
+	return tfa.layers.layers.LayerNormalization(center=True, scale=True)(x)
+    #return tf_contrib.layers.layer_norm(x, center=True, scale=True, scope=scope)
 
 
 def layer_instance_norm(x, scope='layer_instance_norm'):
