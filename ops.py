@@ -313,13 +313,13 @@ def L1_loss(x, y):
 
 
 def _tensor_size(t):
-    return t.size()[1] * t.size()[2] * t.size()[3]
+    return t.shape[1] * t.shape[2] * t.shape[3]
 
 
 def tv_loss(x):
-    batch_size = x.size()[0]
-    h_x = x.size()[1]
-    w_x = x.size()[2]
+    batch_size = x.shape[0]
+    h_x = x.shape[1]
+    w_x = x.shape[2]
     count_h = _tensor_size(x[:, 1:, :, :])
     count_w = _tensor_size(x[:, :, 1:, :])
     h_tv = tf.reduce_sum(input_tensor=tf.pow((x[:, 1:, :, :] - x[:, h_x-1:, :, :]), 2))
