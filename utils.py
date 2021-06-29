@@ -1,5 +1,6 @@
 import tensorflow as tf
-from tensorflow.contrib import slim
+#from tensorflow.contrib import slim
+import tf_slim as slim
 import cv2
 import os, random
 import numpy as np
