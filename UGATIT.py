@@ -417,10 +417,10 @@ class UGATIT(object) :
             x_aa, cam_aa = self.generate_b2a(self.domain_A, reuse=True) # fake b
             x_bb, cam_bb = self.generate_a2b(self.domain_B, reuse=True) # fake a
 	
-	    sem_aa, cam_d = self.generate_a2b(x_ab, reuse=True)
+            sem_aa, cam_d = self.generate_a2b(x_ab, reuse=True)
             sem_bb, cam_f = self.generate_b2a(x_ba, reuse=True)
-            sem_A = self.generate_a2b(sem_aa, reuse=True)
-            sem_B = self.generate_b2a(sem_bb, reuse=True)
+            sem_As, _ = self.generate_a2b(sem_aa, reuse=True)
+            sem_Bs, _ = self.generate_b2a(sem_bb, reuse=True)
 
             real_A_logit, real_A_cam_logit, real_B_logit, real_B_cam_logit = self.discriminate_real(self.domain_A, self.domain_B)
             fake_A_logit, fake_A_cam_logit, fake_B_logit, fake_B_cam_logit = self.discriminate_fake(x_ba, x_ab)
@@ -451,6 +451,9 @@ class UGATIT(object) :
 
             pixel_A = L1_loss(x_ab, self.domain_A)
             pixel_B = L1_loss(x_ba, self.domain_B)
+		
+            sem_A = L1_loss(sem_As, self.domain_A)
+            sem_B = L1_loss(sem_Bs, self.domain_B)
 
             #"acl_A = "
             #"acl_B = "
