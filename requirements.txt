@@ -3,3 +3,4 @@ numpy
 h5py
 opencv-python
 tensorflow-addons
+tf-slim
