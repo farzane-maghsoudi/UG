@@ -2,7 +2,7 @@ from ops import *
 from utils import *
 from glob import glob
 import time
-from tensorflow.contrib.data import prefetch_to_device, shuffle_and_repeat, map_and_batch
+#from tensorflow.contrib.data import prefetch_to_device, shuffle_and_repeat, map_and_batch
 import numpy as np
 
 class UGATIT(object) :
@@ -388,8 +388,10 @@ class UGATIT(object) :
 
 
             gpu_device = '/gpu:0'
-            trainA = trainA.apply(tf.data.experimental.shuffle_and_repeat(self.dataset_num)).apply(tf.data.experimental.map_and_batch(Image_Data_Class.image_processing, self.batch_size, num_parallel_batches=16, drop_remainder=True)).apply(prefetch_to_device(gpu_device, None))
-            trainB = trainB.apply(tf.data.experimental.shuffle_and_repeat(self.dataset_num)).apply(tf.data.experimental.map_and_batch(Image_Data_Class.image_processing, self.batch_size, num_parallel_batches=16, drop_remainder=True)).apply(prefetch_to_device(gpu_device, None))
+            #trainA = trainA.apply(tf.data.experimental.shuffle_and_repeat(self.dataset_num)).apply(tf.data.experimental.map_and_batch(Image_Data_Class.image_processing, self.batch_size, num_parallel_batches=16, drop_remainder=True)).apply(prefetch_to_device(gpu_device, None))
+            #trainB = trainB.apply(tf.data.experimental.shuffle_and_repeat(self.dataset_num)).apply(tf.data.experimental.map_and_batch(Image_Data_Class.image_processing, self.batch_size, num_parallel_batches=16, drop_remainder=True)).apply(prefetch_to_device(gpu_device, None))
+	    trainA = trainA.apply(tf.data.experimental.shuffle_and_repeat(self.dataset_num)).apply(tf.data.experimental.map_and_batch(Image_Data_Class.image_processing, self.batch_size, num_parallel_batches=16, drop_remainder=True)).apply(tf.data.experimental.prefetch_to_device(gpu_device, None))
+            trainB = trainB.apply(tf.data.experimental.shuffle_and_repeat(self.dataset_num)).apply(tf.data.experimental.map_and_batch(Image_Data_Class.image_processing, self.batch_size, num_parallel_batches=16, drop_remainder=True)).apply(tf.data.experimental.prefetch_to_device(gpu_device, None))
 
 
             trainA_iterator = tf.compat.v1.data.make_one_shot_iterator(trainA)
