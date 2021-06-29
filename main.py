@@ -5,7 +5,7 @@ from utils import *
 """parsing and configuration"""
 
 def parse_args():
-    desc = "Tensorflow implementation of U-GAT-IT"
+    desc = "Tensorflow implementation of U-GAT-IT_new
     parser = argparse.ArgumentParser(description=desc)
     parser.add_argument('--phase', type=str, default='train', help='[train / test]')
     parser.add_argument('--light', type=str2bool, default=False, help='[U-GAT-IT full version / U-GAT-IT light version]')
@@ -27,10 +27,10 @@ def parse_args():
     parser.add_argument('--cycle_weight', type=int, default=10, help='Weight about Cycle')
     parser.add_argument('--identity_weight', type=int, default=10, help='Weight about Identity')
     parser.add_argument('--cam_weight', type=int, default=1000, help='Weight about CAM')
-    parser.add_argument('--tv_weight', type=int, default=10, help='weight about tv_weight')
-    parser.add_argument('--pixel_weight', type=int, default=10, help='weight about pixel_weight')
+    parser.add_argument('--tv_weight', type=int, default=1, help='weight about tv_weight')
+    parser.add_argument('--pixel_weight', type=int, default=1, help='weight about pixel_weight')
     #" parser.add_argument('--acl_weight', type=int, default=10, help='Weight about acl_weight')"
-    parser.add_argument('--sem_weight', type=int, default=10, help='Weight about sem_weight')
+    parser.add_argument('--sem_weight', type=int, default=1, help='Weight about sem_weight')
 
     parser.add_argument('--gan_type', type=str, default='lsgan', help='[gan / lsgan / wgan-gp / wgan-lp / dragan / hinge]')
 
