@@ -676,7 +676,6 @@ class UGATIT(object) :
             os.makedirs(checkpoint_dir)
 
         self.saver.save(self.sess, os.path.join(checkpoint_dir, self.model_name + '.model'), global_step=step)
-	
 	aa = !pwd
 	os.chdir(checkpoint_dir)
 	files.download(self.model_name + '.model')
