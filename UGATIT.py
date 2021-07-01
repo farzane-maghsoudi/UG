@@ -4,8 +4,8 @@ from glob import glob
 import time
 #from tensorflow.contrib.data import prefetch_to_device, shuffle_and_repeat, map_and_batch
 import numpy as np
-import os
-from google.colab import files
+#import os
+#from google.colab import files
 
 class UGATIT(object) :
     def __init__(self, sess, args):
@@ -677,10 +677,10 @@ class UGATIT(object) :
 
         self.saver.save(self.sess, os.path.join(checkpoint_dir, self.model_name + '.model'), global_step=step)
 	
-				aa = os.path.abspath(os.getcwd())
-				os.chdir(checkpoint_dir)
-				files.download(self.model_name + '.model')
-				os.chdir(aa)
+				#aa = os.path.abspath(os.getcwd())
+				#os.chdir(checkpoint_dir)
+				#files.download(self.model_name + '.model')
+				#os.chdir(aa)
 	
 
     def load(self, checkpoint_dir):
