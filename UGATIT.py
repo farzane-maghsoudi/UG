@@ -4,8 +4,8 @@ from glob import glob
 import time
 #from tensorflow.contrib.data import prefetch_to_device, shuffle_and_repeat, map_and_batch
 import numpy as np
-#import os
-#from google.colab import files
+import os
+from google.colab import files
 
 class UGATIT(object) :
     def __init__(self, sess, args):
@@ -647,6 +647,13 @@ class UGATIT(object) :
 
             # save model for final step
             self.save(self.checkpoint_dir, counter)
+	
+			aa = os.path.abspath(os.getcwd())
+			os.chdir('UG\checkpoint\UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing')
+			files.download('UGATIT_light.model-' + counter + '.index')
+			files.download('UGATIT_light.model-' + counter + '.meta')
+			files.download('UGATIT_light.model-' + counter + '.data-00000-of-00001')
+			os.chdir(aa)
 
     @property
     def model_dir(self):
