@@ -649,10 +649,10 @@ class UGATIT(object) :
             self.save(self.checkpoint_dir, counter)
 	
 			aa = os.path.abspath(os.getcwd())
-			os.chdir('UG\checkpoint\UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing')
-			files.download('UGATIT_light.model-' + counter + '.index')
-			files.download('UGATIT_light.model-' + counter + '.meta')
-			files.download('UGATIT_light.model-' + counter + '.data-00000-of-00001')
+			os.chdir('/content/UG/checkpoint/UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing')
+			files.download('UGATIT_light.model-' + str(counter) + '.index')
+			files.download('UGATIT_light.model-' + str(counter) + '.meta')
+			files.download('UGATIT_light.model-' + str(counter) + '.data-00000-of-00001')
 			os.chdir(aa)
 
     @property
