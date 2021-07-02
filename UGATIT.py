@@ -4,8 +4,8 @@ from glob import glob
 import time
 #from tensorflow.contrib.data import prefetch_to_device, shuffle_and_repeat, map_and_batch
 import numpy as np
-import os
-from google.colab import files
+#import os
+#from google.colab import files
 
 class UGATIT(object) :
     def __init__(self, sess, args):
