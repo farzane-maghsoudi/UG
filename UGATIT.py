@@ -647,18 +647,18 @@ class UGATIT(object) :
 
             # save model for final step
             self.save(self.checkpoint_dir, counter)
-	    a = (epoch+1)*1000
-	    b = "/content/gdrive/MyDrive/checkpoint/UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing"
-	    c = "/content/UG/checkpoint/UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing"
-	    f1 = "/UGATIT_light.model-"+ str(a)+ ".index"
-	    f2 = "/UGATIT_light.model-"+ str(a)+ ".meta"
-	    f3 = "/UGATIT_light.model-" + str(a)+ ".data-00000-of-00001"
-	    f = "/checkpoint"
-	    import shutil
-	    shutil.copy( c+f1 , b+f1 )
-	    shutil.copy( c+f2 , b+f2 )
-	    shutil.copy( c+f3 , b+f3 )
-	    shutil.copy( c+f , b+f )
+				    a = (epoch+1)*1000
+				    b = "/content/gdrive/MyDrive/checkpoint/UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing"
+				    c = "/content/UG/checkpoint/UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing"
+				    f1 = "/UGATIT_light.model-"+ str(a)+ ".index"
+				    f2 = "/UGATIT_light.model-"+ str(a)+ ".meta"
+				    f3 = "/UGATIT_light.model-" + str(a)+ ".data-00000-of-00001"
+				    f = "/checkpoint"
+				    import shutil
+				    shutil.copy( c+f1 , b+f1 )
+				    shutil.copy( c+f2 , b+f2 )
+				    shutil.copy( c+f3 , b+f3 )
+				    shutil.copy( c+f , b+f )
 	
 		#aa = os.path.abspath(os.getcwd())
 		#os.chdir('/content/UG/checkpoint/UGATIT_light_apple2orange_lsgan_4resblock_6dis_1_1_10_10_1000_1_1_1_sn_smoothing')
