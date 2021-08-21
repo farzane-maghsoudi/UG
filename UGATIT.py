@@ -726,6 +726,8 @@ class UGATIT(object) :
         could_load, checkpoint_counter = self.load(self.checkpoint_dir)
         self.result_dir = os.path.join(self.result_dir, self.model_dir)
         check_folder(self.result_dir)
+	check_folder(self.result_dir + '/fake_A')
+	check_folder(self.result_dir + '/fake_B')
 
         if could_load :
             print(" [*] Load SUCCESS")
